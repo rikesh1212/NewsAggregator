@@ -19,5 +19,3 @@ class ContentDetailView(RetrieveAPIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
-
-
