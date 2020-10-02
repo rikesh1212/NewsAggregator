@@ -52,37 +52,3 @@ for title, category in zip(loi_news, loi_cat):
             continue
 
 
-# a normal view to check the data is being received or not
-
-def index(request):
-    return render(request,'index.html',{'toi_news':toi_news, 'toi_cat': toi_cat,'loi_news': loi_news,'loi_cat': loi_cat,})
-
-
-
-# def scrape(request):
-#     session = requests.Session()
-#     session.headers = {"User-Agent": "Googlebot/2.1 (+http://www.google.com/bot.html)"}
-#     url = "https://www.mashable.com/"
-#
-#     content = session.get(url, verify=False).content
-#     soup = BSoup(content, "html.parser")
-#     News = soup.find_all('div', {"class": "article-container sharable"})
-#     for n in News:
-#         main = n.find_all('a')[0]
-#         link = main['href']
-#         image_src = str(main.find('img')['srcset']).split(" ")[-4]
-#         title = main['title']
-#         cat = main['title']
-#         new_content = Content()
-#         new_content.title = title
-#         new_content.url = link
-#         new_content.image = image_src
-#         new_content.category = cat
-#         new_content.save()
-#     return redirect("../")
-
-
-
-
-
-
