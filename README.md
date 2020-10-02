@@ -11,9 +11,10 @@ python manage.py runserver
 ## For integrating with front end,
 
 in routing.py, view_as_consumer can be used
+```
 
 from djangochannelsrestframework.consumers import view_as_consumer
-```
+
 
 application = ProtocolTypeRouter({
     "websocket": AuthMiddlewareStack(
