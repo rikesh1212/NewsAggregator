@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'rest_framework.authtoken',
+    'channels',
+    'djangochannelsrestframework',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +56,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'newsaggregator.urls'
+
 
 TEMPLATES = [
     {
@@ -73,6 +76,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'newsaggregator.wsgi.application'
 
+ASGI_APPLICATION = "newsaggregator.routing.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
