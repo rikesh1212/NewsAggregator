@@ -52,3 +52,53 @@ for title, category in zip(loi_news, loi_cat):
             continue
 
 
+# scraping data from nepalnews.com
+noi_r = requests.get("https://www.nepalnews.com/")
+noi_soup = BeautifulSoup(noi_r.content,'html5lib')
+noi_headings = noi_soup.findAll("a", {"class": "uk-link-reset"})[0:9]
+noi_category = noi_soup.findAll("span", {"class": "uk-button uk-button-secondary uk-button-small"})[0:9]
+noi_news = [nh.text for nh in noi_headings]
+noi_cat = [nr.text for nr in noi_category]
+
+for nh in noi_headings:
+    noi_news.append(nh.text)
+
+for nr in noi_category:
+    noi_cat.append(nr.text)
+
+for title, category in zip(noi_news, noi_cat):
+    try:
+        n = Content.objects.create(title=title, category=category)
+    except IntegrityError as e:
+        if 'unique constraint' in e.args:
+            continue
+
+
+poi_r = requests.get("https://www.ashesh.com.np/category/news/")
+poi_soup = BeautifulSoup(poi_r.content,'html5lib')
+poi_headings = poi_soup.findAll("h2", {"class": "title"})[0:9]
+poi_category = poi_soup.findAll("div", {"class": "featured-cat"})[0:9]
+poi_news = []
+poi_cat = []
+
+for ph in poi_headings:
+    poi_news.append(ph.text)
+
+for pr in poi_category:
+    poi_cat.append(pr.text)
+
+for title, category in zip(poi_news, poi_cat):
+    try:
+        n = Content.objects.create(title=title, category=category)
+    except IntegrityError as e:
+        if 'unique constraint' in e.args:
+            continue
+
+
+
+
+
+
+
+
+
